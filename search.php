@@ -5,6 +5,18 @@ if ($conn->connect_error) {
     die("Ошибка подключения к базе данных: " . $conn->connect_error);
 }
 
+$userCount = 0; // Инициализация переменной перед использованием
+
+$sql = "SELECT COUNT(*) AS user_count FROM users"; // Запрос для подсчета пользователей
+$result = $conn->query($sql);
+
+if ($result) {
+    $row = $result->fetch_assoc();
+    $userCount = $row['user_count'];
+} else {
+    $userCount = 0; // В случае ошибки запроса
+}
+
 if (isset($_POST['search_query'])) {
     $search_query = $_POST['search_text'];
 

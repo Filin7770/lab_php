@@ -36,6 +36,18 @@ img {
     left: auto;
 }
 
+.quantity p {
+    color: #111;
+    margin-top: 0;
+    margin-bottom: 0rem;
+    padding-top: 7px;
+    font-size: 18px;
+}
+
+.number {
+    padding-left: 7px;
+}
+
 .top-menu li a::after {
     content:"";
     display: block;
