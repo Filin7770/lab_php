@@ -20,14 +20,32 @@ if ($result) {
 if (isset($_POST['search_query'])) {
     $search_query = $_POST['search_text'];
 
-    $sql = "SELECT * FROM products WHERE name_of_product LIKE '%$search_query%' OR composition LIKE '%$search_query%'";
+    $sql = "SELECT * FROM products WHERE name LIKE '%$search_query%' OR composition LIKE '%$search_query%'";
 
     $result = $conn->query($sql);
 
     if ($result) {
         while ($row = $result->fetch_assoc()) {
-            echo "<h2>" . $row['name_of_product'] . "</h2>";
+            echo "<h2>" . $row['name'] . "</h2>";
             echo "<p>Состав: " . $row['composition'] . "</p>";
+        }
+        $result->free();
+    } else {
+        echo "Ошибка запроса: " . $conn->error;
+    }
+}
+
+if (isset($_POST['search_query'])) {
+    $search_query = $_POST['search_text'];
+
+    $sql = "SELECT * FROM dishes WHERE name LIKE '%$search_query%' OR ingredients LIKE '%$search_query%'";
+
+    $result = $conn->query($sql);
+
+    if ($result) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<h2>" . $row['name'] . "</h2>";
+            echo "<p>Состав: " . $row['ingredients'] . "</p>";
         }
         $result->free();
     } else {

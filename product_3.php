@@ -35,7 +35,7 @@ $conn->close();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/drink.css" />
-    <title><?php echo $row['name_of_product']; ?></title>
+    <title><?php echo $row['name']; ?></title>
 </head>
 
 <body>
@@ -75,7 +75,7 @@ $conn->close();
         <div class="info__wrapper">
             <div class="info__header">
                 <p class="info__heading">
-                <?php echo $row['name_of_product']; ?>
+                <?php echo $row['name']; ?>
                 </p>
                 <p class="info__text">
                 <?php echo $row['weight']; ?>
@@ -83,7 +83,7 @@ $conn->close();
             </div>
             <div class="info__card">
                 <div class="info__models">
-                    <img class="models__img" src="img/1-drink.svg" alt="<?php echo $row['name_of_product']; ?>" />
+                    <img class="models__img" src="img/3-product.svg" alt="<?php echo $row['name']; ?>" />
                 </div>
                 <div>
                     <div class="info__container">
@@ -99,12 +99,6 @@ $conn->close();
                         <span class="info__about">О товаре</span>
                         <p class="info__wording">Состав</p>
                         <p class="info__primary"><?php echo $row['composition']; ?></p>
-                        <p class="info__wording-1">Срок годности, условия хранения</p>
-                        <p class="info__primary">365 д., от 0 °C до +25 °C</p>
-                        <p class="info__wording-1">Производитель, страна</p>
-                        <p class="info__primary">ООО «ПК «Аква-Лайф», Россия</p>
-                        <p class="info__wording-1">Бренд</p>
-                        <p class="info__primary">Черноголовка</p>
                     </div>
                 </div>
             </div>

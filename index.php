@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <style>
@@ -241,10 +239,10 @@
                 <div class="col-lg-4 col-sm-6 mb-3">
                     <div class="product-card">
                         <div class="product-img">
-                            <a href="drink.php?product_id=3"> <img src="img/1.jpg" class="d-block w-100" alt="Лимонад"> </a>
+                            <a href="product_1.php?product_id=3"> <img src="img/1.jpg" class="d-block w-100" alt="Лимонад"> </a>
                         </div>
                         <div class="product-details">
-                            <h4><a href="drink.php?product_id=3"></a>Напиток Лимонад Черноголовка</h4>
+                            <h4><a href="product_1.php?product_id=3"></a>Напиток Лимонад Черноголовка</h4>
                             <p>500 мл</p>
                             <div class="product-bottom-details d-flex justify-content-between">
                                 <div class="product-price">75 ₽</div>
@@ -258,10 +256,10 @@
                 <div class="col-lg-4 col-sm-6 mb-3">
                     <div class="product-card">
                         <div class="product-img">
-                            <a href="#"> <img src="img/2.jpg" class="d-block w-100" alt="Филе"> </a>
+                            <a href="product_2.php?product_id=13"> <img src="img/2.jpg" class="d-block w-100" alt="Филе"> </a>
                         </div>
                         <div class="product-details">
-                            <h4><a href="#"></a>Филе грудки цыплёнка Троекурово</h4>
+                            <h4><a href="product_2.php?product_id=13"></a>Филе грудки цыплёнка Троекурово</h4>
                             <p>500г</p>
                             <div class="product-bottom-details d-flex justify-content-between">
                                 <div class="product-price">219 ₽</div>
@@ -275,10 +273,10 @@
                 <div class="col-lg-4 col-sm-6 mb-3">
                     <div class="product-card">
                         <div class="product-img">
-                            <a href="#"> <img src="img/3.jpg" class="d-block w-100" alt="Макароны"> </a>
+                            <a href="product_3.php?product_id=7"> <img src="img/3.jpg" class="d-block w-100" alt="Макароны"> </a>
                         </div>
                         <div class="product-details">
-                            <h4><a href="#"></a>Макароны Barilla Farfalle бантики</h4>
+                            <h4><a href="product_3.php?product_id=7"></a>Макароны Barilla Farfalle бантики</h4>
                             <p>400г</p>
                             <div class="product-bottom-details d-flex justify-content-between">
                                 <div class="product-price">145 ₽</div>
