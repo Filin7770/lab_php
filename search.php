@@ -5,16 +5,16 @@ if ($conn->connect_error) {
     die("Ошибка подключения к базе данных: " . $conn->connect_error);
 }
 
-$userCount = 0; // Инициализация переменной перед использованием
+$userCount = 0;
 
-$sql = "SELECT COUNT(*) AS user_count FROM users"; // Запрос для подсчета пользователей
+$sql = "SELECT COUNT(*) AS user_count FROM users";
 $result = $conn->query($sql);
 
 if ($result) {
     $row = $result->fetch_assoc();
     $userCount = $row['user_count'];
 } else {
-    $userCount = 0; // В случае ошибки запроса
+    $userCount = 0;
 }
 
 if (isset($_POST['search_query'])) {
@@ -73,12 +73,21 @@ if (isset($_POST['login'], $_POST['password'])) {
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "Добро пожаловать, " . $row['login'];
-            }
-            exit(); // Останавливаем скрипт после успешной авторизации
+            // Успешная авторизация
+            // Получите логин пользователя
+            $userLogin = $login;
+
+            // Сохраните логин в сессии
+            session_start();
+            $_SESSION['userLogin'] = $userLogin;
+
+            // Перенаправляем на страницу profile.php
+            header("Location: profile.php");
+            exit(); // Останавливаем скрипт после перенаправления
         } else {
             echo "Нет такого пользователя";
+            // Вставляем кнопку "Назад" с помощью HTML
+            echo '<br><a href="javascript:history.go(-1)">Назад</a>';
         }
     }
 }
