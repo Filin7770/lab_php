@@ -1,29 +1,3 @@
-<?php
-$conn = new mysqli("localhost", "root", "", "foodstore");
-
-if ($conn->connect_error) {
-    die("Ошибка подключения к базе данных: " . $conn->connect_error);
-}
-
-$row = null; // Инициализируйте переменную $row значением null
-
-if (isset($_GET['product_id'])) {
-    $product_id = $_GET['product_id'];
-    $query = "SELECT * FROM products WHERE id = $product_id";
-    $result = $conn->query($query);
-
-    if ($result && $result->num_rows > 0) {
-        $row = $result->fetch_assoc(); // Присвойте $row результат запроса
-    } else {
-        echo 'Продукт не найден.';
-    }
-} else {
-    echo 'Неверный запрос.';
-}
-
-$conn->close();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <style>
@@ -35,7 +9,7 @@ $conn->close();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/drink.css" />
-    <title><?php echo $row['name_of_product']; ?></title>
+    <title>Напиток Лимонад Черноголовка</title>
 </head>
 
 <body>
@@ -75,19 +49,19 @@ $conn->close();
         <div class="info__wrapper">
             <div class="info__header">
                 <p class="info__heading">
-                <?php echo $row['name_of_product']; ?>
+                    Напиток Лимонад «Черноголовка»
                 </p>
                 <p class="info__text">
-                <?php echo $row['weight']; ?>
+                    500 мл
                 </p>
             </div>
             <div class="info__card">
                 <div class="info__models">
-                    <img class="models__img" src="img/1-drink.svg" alt="<?php echo $row['name_of_product']; ?>" />
+                    <img class="models__img" src="img/1-drink.svg" alt="Напиток Лимонад Черноголовка" />
                 </div>
                 <div>
                     <div class="info__container">
-                        <p class="info__cost"><?php echo $row['price']; ?></p>
+                        <p class="info__cost">75 ₽</p>
                         <button class="info__basket">
                             <a href="" target="_blank" class="basket">
                                 <p class="basket__text">В корзину</p>
@@ -98,7 +72,10 @@ $conn->close();
                     <div class="info__descriptions">
                         <span class="info__about">О товаре</span>
                         <p class="info__wording">Состав</p>
-                        <p class="info__primary"><?php echo $row['composition']; ?></p>
+                        <p class="info__primary">Вода подготовленная, сахар, экстракты: элеутерококка, чёрного чая,
+                            краситель сахарный колер IV (Е150d), натуральные вкусоароматические вещества, регулятор
+                            кислотности кислота лимонная, масла: кардамона, эвкалипта, лимона, консервант бензоат
+                            натрия.</p>
                         <p class="info__wording-1">Срок годности, условия хранения</p>
                         <p class="info__primary">365 д., от 0 °C до +25 °C</p>
                         <p class="info__wording-1">Производитель, страна</p>
@@ -107,6 +84,7 @@ $conn->close();
                         <p class="info__primary">Черноголовка</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>

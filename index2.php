@@ -241,10 +241,10 @@
                 <div class="col-lg-4 col-sm-6 mb-3">
                     <div class="product-card">
                         <div class="product-img">
-                            <a href="drink.php?product_id=3"> <img src="img/1.jpg" class="d-block w-100" alt="Лимонад"> </a>
+                            <a href="№"> <img src="img/1.jpg" class="d-block w-100" alt="Лимонад"> </a>
                         </div>
                         <div class="product-details">
-                            <h4><a href="drink.php?product_id=3"></a>Напиток Лимонад Черноголовка</h4>
+                            <h4><a href="№"></a>Напиток Лимонад Черноголовка</h4>
                             <p>500 мл</p>
                             <div class="product-bottom-details d-flex justify-content-between">
                                 <div class="product-price">75 ₽</div>
