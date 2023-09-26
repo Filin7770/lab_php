@@ -10,6 +10,26 @@ if (!isset($_SESSION['userLogin'])) {
 
 // Получите логин пользователя из сессии
 $userLogin = $_SESSION['userLogin'];
+$conn = new mysqli("localhost", "root", "", "foodstore");
+
+if ($conn->connect_error) {
+    die("Ошибка подключения к базе данных: " . $conn->connect_error);
+}
+
+// Подготавливаем SQL-запрос для получения пароля пользователя
+$getPasswordSql = "SELECT pass FROM users WHERE login = '$userLogin'";
+$result = $conn->query($getPasswordSql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $userPassword = $row['pass'];
+} else {
+    // Пользователь не найден
+    $userPassword = "Пароль не найден";
+}
+
+// Закрываем соединение с базой данных
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -132,7 +152,7 @@ $userLogin = $_SESSION['userLogin'];
             <div class="col-md-6 offset-md-3">
                 <h1>Личный кабинет</h1>
                 <p>Ваш логин: <?php echo $userLogin; ?></p>
-                <p>Ваш пароль: ********</p>
+                <p>Ваш пароль: <?php echo $userPassword; ?></p>
                 <!-- Форма для изменения пароля -->
                 <form action="user.php" method="post">
                     <div class="form-group">
