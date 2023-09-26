@@ -131,21 +131,21 @@
                                                 <tbody>
                                                     <tr>
                                                         <th scope="row">1</th>
-                                                        <td><img src="img/1.jpg" alt="Лимонад"></td>
+                                                        <td><img src="img/1.svg" alt="Лимонад"></td>
                                                         <td><a href="#">Напиток Лимонад Черноголовка 500 мл</a></td>
                                                         <td>75 ₽</td>
                                                         <td>1</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">2</th>
-                                                        <td><img src="img/2.jpg" alt="Филе"></td>
+                                                        <td><img src="img/2.svg" alt="Филе"></td>
                                                         <td><a href="#">Филе грудки цыплёнка кубиками Троекурово 500г</a></td>
                                                         <td>219 ₽</td>
                                                         <td>1</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">3</th>
-                                                        <td><img src="img/3.jpg" alt="Макароны"></td>
+                                                        <td><img src="img/3.svg" alt="Макароны"></td>
                                                         <td><a href="#">Макароны Barilla Farfalle бантики 400г</a></td>
                                                         <td>145 ₽</td>
                                                         <td>1</td>
@@ -239,7 +239,7 @@
                 <div class="col-lg-4 col-sm-6 mb-3">
                     <div class="product-card">
                         <div class="product-img">
-                            <a href="product_1.php?product_id=3"> <img src="img/1.jpg" class="d-block w-100" alt="Лимонад"> </a>
+                            <a href="product_1.php?product_id=3"> <img src="img/1.svg" class="d-block w-100" alt="Лимонад"> </a>
                         </div>
                         <div class="product-details">
                             <h4><a href="product_1.php?product_id=3"></a>Напиток Лимонад Черноголовка</h4>
@@ -256,7 +256,7 @@
                 <div class="col-lg-4 col-sm-6 mb-3">
                     <div class="product-card">
                         <div class="product-img">
-                            <a href="product_2.php?product_id=13"> <img src="img/2.jpg" class="d-block w-100" alt="Филе"> </a>
+                            <a href="product_2.php?product_id=13"> <img src="img/2.svg" class="d-block w-100" alt="Филе"> </a>
                         </div>
                         <div class="product-details">
                             <h4><a href="product_2.php?product_id=13"></a>Филе грудки цыплёнка Троекурово</h4>
@@ -273,7 +273,7 @@
                 <div class="col-lg-4 col-sm-6 mb-3">
                     <div class="product-card">
                         <div class="product-img">
-                            <a href="product_3.php?product_id=7"> <img src="img/3.jpg" class="d-block w-100" alt="Макароны"> </a>
+                            <a href="product_3.php?product_id=7"> <img src="img/3.svg" class="d-block w-100" alt="Макароны"> </a>
                         </div>
                         <div class="product-details">
                             <h4><a href="product_3.php?product_id=7"></a>Макароны Barilla Farfalle бантики</h4>
