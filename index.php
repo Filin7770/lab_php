@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-light text-white">
+    <nav class="navbar navbar-expand-lg" style="background-color: #D9D9D9;">
         <div class="container-fluid justify-content-center">
             <a class="navbar-brand" href="#">Food Store</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

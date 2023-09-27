@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-light text-white">
+    <nav class="navbar navbar-expand-lg" style="background-color: #D9D9D9;">
         <div class="container-fluid justify-content-center">
             <a class="navbar-brand" href="index.php">Food Store</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,83 +107,49 @@
             </div>
         </div>
     </nav>
-    <section>
-    <div class="container mt-5">
-        <h3 class="text-center mb-4">Продукты в наличии</h3>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <?php
-            $conn = new mysqli("localhost", "root", "", "foodstore");
+    <section class=" content mb-5">
+        <div class="container mt-5">
+            <h3 class="text-center mb-4">Продукты в наличии</h3>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <?php
+                $conn = new mysqli("localhost", "root", "", "foodstore");
 
-            if ($conn->connect_error) {
-                die("Ошибка подключения к базе данных: " . $conn->connect_error);
-            }
-    
-            // SQL-запрос для выбора всех продуктов
-            $sql = "SELECT * FROM products";
-            $result = $conn->query($sql);
-    
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<div class="col-lg-4 col-sm-6 mb-3">';
-                    echo '<div class="product-card">';
-                    echo '<div class="product-img">';
-                    echo '<a href="product.php?product_id=' . $row['id'] . '"> <img src="' . $row['image_url'] . '" class="d-block w-100" alt="' . $row['name'] . '"> </a>';
-                    echo '</div>';
-                    echo '<div class="product-details">';
-                    echo '<h4><a href="product.php?product_id=' . $row['id'] . '">' . $row['name'] . '</a></h4>';
-                    echo '<p>' . $row['weight'] . '</p>';
-                    echo '<div class="product-bottom-details d-flex justify-content-between">';
-                    echo '<div class="product-price">' . $row['price'] . '</div>';
-                    echo '<div class="product-link">';
-                    echo '<a href="#"><i class="fa-solid fa-cart-shopping"></i></a>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
+                if ($conn->connect_error) {
+                    die("Ошибка подключения к базе данных: " . $conn->connect_error);
                 }
-            } else {
-                echo 'Продукты не найдены.';
-            }
-    
-            $conn->close();
-            ?>
+
+                // SQL-запрос для выбора всех продуктов
+                $sql = "SELECT * FROM products";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<div class="col-lg-4 col-sm-6 mb-3">';
+                        echo '<div class="product-card">';
+                        echo '<div class="product-img">';
+                        echo '<a href="product.php?product_id=' . $row['id'] . '"> <img src="' . $row['image_url'] . '" class="d-block w-100" alt="' . $row['name'] . '"> </a>';
+                        echo '</div>';
+                        echo '<div class="product-details">';
+                        echo '<h4><a href="product.php?product_id=' . $row['id'] . '">' . $row['name'] . '</a></h4>';
+                        echo '<p>' . $row['weight'] . '</p>';
+                        echo '<div class="product-bottom-details d-flex justify-content-between">';
+                        echo '<div class="product-price">' . $row['price'] . '</div>';
+                        echo '<div class="product-link">';
+                        echo '<a href="#"><i class="fa-solid fa-cart-shopping"></i></a>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo 'Продукты не найдены.';
+                }
+
+                $conn->close();
+                ?>
+            </div>
         </div>
-    </div>
-    </section>
-    <?php
-
-        ?>
-      
-    <section class="additional-content mt-5 mb-5">
-        <<div class="container mt-4">
-            <h3 class="text-center mb-4">Выгодные покупки с Food Store</h3>
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="card w-100 h-100">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <img src="img/ruble.svg" class="models__ruble" alt="ruble">
-                                <h5 class="card-title models__heading">Фиксированная цена</h5>
-                            </div>
-                            <p class="card-text models__head">Сумма покупок не вырастет из-за доставки</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="card w-100 h-100">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <img src="img/shield.svg" class="models__shield" alt="shield">
-                                <h5 class="card-title models__heading">Безопасная оплата</h5>
-                            </div>
-                            <p class="card-text models__head">Контролируем транзакции, если товар пришел не качественным, то вернём деньги</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-
     </section>
 
     <footer>
