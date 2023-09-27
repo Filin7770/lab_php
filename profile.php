@@ -93,7 +93,7 @@ $conn->close();
                             <div class="modal fade" id="modal-login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg">
                                     <div class="modal-content">
-                                        <div class="modal-header bg-primary bg-gradient text-white">
+                                        <div class="modal-header" style="background-color: #D9D9D9;">
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Авторизация</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
@@ -118,7 +118,7 @@ $conn->close();
                                                             <label for="password" class="form-label">Пароль</label>
                                                             <input type="password" class="form-control" id="password" name="password" required>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary">Войти</button>
+                                                        <button type="submit" class="btn" style="background-color: #D9D9D9; color: black;">Войти</button>
                                                     </form>
                                                 </div>
                                                 <!-- Вкладка Регистрация -->
@@ -132,7 +132,7 @@ $conn->close();
                                                             <label for="newPassword" class="form-label">Новый пароль</label>
                                                             <input type="password" class="form-control" id="newPassword" name="newPassword" required>
                                                         </div>
-                                                        <button type="submit" class="btn btn-success">Зарегистрироваться</button>
+                                                        <button type="submit" class="btn" style="background-color: #D9D9D9; color: black;">Зарегистрироваться</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -147,101 +147,102 @@ $conn->close();
         </div>
     </nav>
     <section class="main_content">
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <h1>Личный кабинет</h1>
-                <p>Ваш логин: <?php echo $userLogin; ?></p>
-                <p>Ваш пароль: <?php echo $userPassword; ?></p>
-                <!-- Форма для изменения пароля -->
-                <form action="user.php" method="post">
-                    <div class="form-group">
-                        <label for="newPassword">Новый пароль</label>
-                        <input type="password" class="form-control" id="newPassword" name="newPassword" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="confirmPassword">Подтверждение нового пароля</label>
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Изменить пароль</button>
-                </form>
-                <!-- Кнопка для удаления аккаунта -->
-                <button class="btn btn-danger" onclick="deleteAccount()">Удалить аккаунт</button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- JavaScript для подтверждения удаления аккаунта -->
-<script>
-    function deleteAccount() {
-        // Создаем AJAX-запрос
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "delete_account.php", true);
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-        // Обработчик события, вызываемый при завершении запроса
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var response = xhr.responseText;
-                if (response === "success") {
-                    alert("Удалить аккаунт?.");
-                    window.location.href = "index.php"; // Перенаправление на главную страницу
-                } else {
-                    alert("Ошибка при удалении аккаунта: " + response);
-                }
-            }
-        };
-
-        // Отправляем запрос на удаление аккаунта
-        xhr.send();
-    }
-</script>
-</body>
-</html>
-
-    <footer>
-        <section class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-6 mt-3">
-                        <h4 class="my-custom-font-size">Информация</h4>
-                        <ul class="list-unstyled">
-                            <li><a href="#">Главная</a></li>
-                            <li><a href="#">О магазине</a></li>
-                            <li><a href="#">Оплата и доставка</a></li>
-                            <li><a href="#">Контакты</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-3 col-6 mt-3">
-                        <h4 class="my-custom-font-size">Время работы</h4>
-                        <ul class="list-unstyled">
-                            <li>г. Москва, пр. Ленина д.20</li>
-                            <li>24/7</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3 col-6 mt-3">
-                        <h4 class="my-custom-font-size">Контакты</h4>
-                        <ul class="list-unstyled">
-                            <li><a href="tel:89150435568">89150435568</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3 col-6 mt-3">
-                        <h4 class="my-custom-font-size">Мы в сети</h4>
-                        <div class="footer-icon">
-                            <a href="#"><i class="fab fa-vk"></i></a>
-                            <a href="#"><i class="fab fa-telegram"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <h1>Личный кабинет</h1>
+                    <p>Ваш логин: <?php echo $userLogin; ?></p>
+                    <p>Ваш пароль: <?php echo $userPassword; ?></p>
+                    <!-- Форма для изменения пароля -->
+                    <form action="user.php" method="post">
+                        <div class="form-group">
+                            <label for="newPassword">Новый пароль</label>
+                            <input type="password" class="form-control" id="newPassword" name="newPassword" required>
                         </div>
-
-                    </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Подтверждение нового пароля</label>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-4 mb-2">Изменить пароль</button>
+                    </form>
+                    <!-- Кнопка для удаления аккаунта -->
+                    <button class="btn btn-danger" onclick="deleteAccount()">Удалить аккаунт</button>
                 </div>
             </div>
-        </section>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        </div>
+    </section>
+
+    <!-- JavaScript для подтверждения удаления аккаунта -->
+    <script>
+        function deleteAccount() {
+            // Создаем AJAX-запрос
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "delete_account.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            // Обработчик события, вызываемый при завершении запроса
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = xhr.responseText;
+                    if (response === "success") {
+                        alert("Удалить аккаунт?.");
+                        window.location.href = "index.php"; // Перенаправление на главную страницу
+                    } else {
+                        alert("Ошибка при удалении аккаунта: " + response);
+                    }
+                }
+            };
+
+            // Отправляем запрос на удаление аккаунта
+            xhr.send();
+        }
+    </script>
+</body>
+
+</html>
+
+<footer>
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6 mt-3">
+                    <h4 class="my-custom-font-size">Информация</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Главная</a></li>
+                        <li><a href="#">О магазине</a></li>
+                        <li><a href="#">Оплата и доставка</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 col-6 mt-3">
+                    <h4 class="my-custom-font-size">Время работы</h4>
+                    <ul class="list-unstyled">
+                        <li>г. Москва, пр. Ленина д.20</li>
+                        <li>24/7</li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-6 mt-3">
+                    <h4 class="my-custom-font-size">Контакты</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="tel:89150435568">89150435568</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-6 mt-3">
+                    <h4 class="my-custom-font-size">Мы в сети</h4>
+                    <div class="footer-icon">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 
 </html>

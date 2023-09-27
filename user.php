@@ -50,12 +50,15 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 </head>
+
 <body>
     <?php if ($passwordChanged) { ?>
         <p>Пароль успешно изменён!</p>
-    <button onclick="history.go(-1);">Назад</button>
+        <button onclick="history.go(-1);">Назад</button>
     <?php } ?>
 </body>
+
 </html>

@@ -1,192 +1,179 @@
 body {
-    
-    font-family: "Inter";
-    font-weight: 400;
-    color: black;
-    background: #F5F5F5;
-    min-width: 320px;
-
+  font-family: "Inter";
+  font-weight: 400;
+  color: black;
+  background: #f5f5f5;
+  min-width: 320px;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
-    
+  max-width: 100%;
+  height: auto;
 }
-
-
 
 /* Header */
 .navbar-brand {
-    font-weight: 800;
+  font-weight: 800;
 }
-.navbar-nav{
-    font-weight: 600;
+.navbar-nav {
+  font-weight: 600;
 }
 
 .nav-link {
-    font-weight: 600;
-    transition:none;
-    color: #111;
-
+  font-weight: 600;
+  transition: none;
+  color: #111;
 }
 
 .navbar-nav .dropdown-menu {
-    right: 0;
-    left: auto;
+  right: 0;
+  left: auto;
 }
 
 .quantity p {
-    color: #111;
-    margin-top: 0;
-    margin-bottom: 0rem;
-    padding-top: 7px;
-    font-size: 18px;
+  color: #111;
+  margin-top: 0;
+  margin-bottom: 0rem;
+  padding-top: 7px;
+  font-size: 18px;
 }
 
 .number {
-    padding-left: 7px;
+  padding-left: 7px;
 }
 
 .top-menu li a::after {
-    content:"";
-    display: block;
-    width: 100%;
-    background-color: #111;
-    height: 1px;
-    transition: all .3s;
-    transform: scale(0);
-
+  content: "";
+  display: block;
+  width: 100%;
+  background-color: #111;
+  height: 1px;
+  transition: all 0.3s;
+  transform: scale(0);
 }
 
 .top-menu li a:hover::after {
-    transform: scale(1);
+  transform: scale(1);
 }
 .dropdown-toggle::after {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 .form-label {
-    margin-bottom: 0.5rem;
-    color: black;
+  margin-bottom: 0.5rem;
+  color: black;
 }
 
-
 .btn-outline-success {
-    color: #111;
+  color: #111;
 }
 
 .model-body img {
-    max-width: 100px;
+  max-width: 100px;
 }
 /* Header */
 
-
 /* first__content */
 .custom-width {
-    max-width: 300px;
-    margin: 0 auto;
+  max-width: 300px;
+  margin: 0 auto;
 }
 /* first__content */
 
 /* Additional contant */
 .card {
-    background-color: #D9D9D9;
-  }
+  background-color: #d9d9d9;
+}
 /* Additional contant */
 
 /* Product card */
 .product-card {
--webkit-box-shadow: 14px -1px 16px 2px rgba(34, 60, 80, 0.31);
--moz-box-shadow: 14px -1px 16px 2px rgba(34, 60, 80, 0.31);
-box-shadow: 14px -1px 16px 2px rgba(34, 60, 80, 0.31);;
+  -webkit-box-shadow: 14px -1px 16px 2px rgba(34, 60, 80, 0.31);
+  -moz-box-shadow: 14px -1px 16px 2px rgba(34, 60, 80, 0.31);
+  box-shadow: 14px -1px 16px 2px rgba(34, 60, 80, 0.31);
 }
 
 .product-img a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 400px;
-    padding: 20px;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  padding: 20px;
 }
 
 .product-img img {
-    max-width: 100%;
-    max-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .product-details {
-    padding: 20px;
-
+  padding: 20px;
 }
 
 h4 {
-    font-size: 22px;
+  font-size: 22px;
 }
 
 .product-details h4 a {
-    color: #111;
-    font-weight: 500;
-    display: block;
-    height: 60px;
-    overflow: hidden;
-    text-decoration: none;
-
+  color: #111;
+  font-weight: 500;
+  display: block;
+  height: 60px;
+  overflow: hidden;
+  text-decoration: none;
 }
 
 .product-details p {
-    font-size: 15px;
-    margin-bottom: 20px;
-    color: #999;
-    overflow: hidden;
+  font-size: 15px;
+  margin-bottom: 20px;
+  color: #999;
+  overflow: hidden;
 }
 
 .product-bottom-details {
-    overflow: hidden;
-    border-top: 1px solid #d9d9d978;
-    padding-top: 20px;
+  overflow: hidden;
+  border-top: 1px solid #d9d9d978;
+  padding-top: 20px;
 }
 
 .product-price {
-    font-size: 18px;
-    color: #000000;
-    font-weight: 600;
+  font-size: 18px;
+  color: #000000;
+  font-weight: 600;
 }
 
 .product-link a {
-    font-size: 20p;
-    margin-left: 10px;
-
+  font-size: 20p;
+  margin-left: 10px;
 }
 /* Product card */
 
 /* Footer */
 .footer {
-    background-color: #D9D9D9;
+  background-color: #d9d9d9;
 }
 
 .footer h4 {
-    color: #000000;
-    text-transform: uppercase;
-    font-size: 20px;
-    border-bottom: 1px solid #666;
-    padding-bottom: 3px;
+  color: #000000;
+  text-transform: uppercase;
+  font-size: 20px;
+  border-bottom: 1px solid #666;
+  padding-bottom: 3px;
 }
 
 .footer a {
-    text-decoration: none;
-    transition: all .3s;
-    color: #000000;
+  text-decoration: none;
+  transition: all 0.3s;
+  color: #000000;
 }
 
 .footer a:hover {
-    color: #fff;
-    text-decoration: underline;
-} 
+  color: #fff;
+  text-decoration: underline;
+}
 .footer-icon {
-    display: inline-block;
-    margin-right: 15px;
-    font-size: 40px;
+  display: inline-block;
+  margin-right: 15px;
+  font-size: 40px;
 }
 /* Footer */

@@ -54,7 +54,7 @@
                             <div class="modal fade" id="modal-login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg">
                                     <div class="modal-content">
-                                        <div class="modal-header bg-primary bg-gradient text-white">
+                                        <div class="modal-header" style="background-color: #D9D9D9;">
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Авторизация</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
@@ -79,7 +79,7 @@
                                                             <label for="password" class="form-label">Пароль</label>
                                                             <input type="password" class="form-control" id="password" name="password" required>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary">Войти</button>
+                                                        <button type="submit" class="btn" style="background-color: #D9D9D9; color: black;">Войти</button>
                                                     </form>
                                                 </div>
                                                 <!-- Вкладка Регистрация -->
@@ -93,11 +93,12 @@
                                                             <label for="newPassword" class="form-label">Новый пароль</label>
                                                             <input type="password" class="form-control" id="newPassword" name="newPassword" required>
                                                         </div>
-                                                        <button type="submit" class="btn btn-success">Зарегистрироваться</button>
+                                                        <button type="submit" class="btn" style="background-color: #D9D9D9; color: black;">Зарегистрироваться</button>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +109,7 @@
                             <div class="modal fade" id="modal-cart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable modal-xl">
                                     <div class="modal-content">
-                                        <div class="modal-header bg-primary bg-gradient text-white">
+                                        <div class="modal-header" style="background-color: #D9D9D9;">
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Корзина</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
@@ -126,21 +127,21 @@
                                                 <tbody>
                                                     <tr>
                                                         <th scope="row">1</th>
-                                                        <td><img src="img/1.svg" alt="Лимонад"></td>
+                                                        <td><img src="img/1.png" alt="Лимонад"></td>
                                                         <td><a href="#">Напиток Лимонад Черноголовка 500 мл</a></td>
                                                         <td>75 ₽</td>
                                                         <td>1</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">2</th>
-                                                        <td><img src="img/2.svg" alt="Филе"></td>
+                                                        <td><img src="img/2.png" alt="Филе"></td>
                                                         <td><a href="#">Филе грудки цыплёнка кубиками Троекурово 500г</a></td>
                                                         <td>219 ₽</td>
                                                         <td>1</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">3</th>
-                                                        <td><img src="img/3.svg" alt="Макароны"></td>
+                                                        <td><img src="img/3.png" alt="Макароны"></td>
                                                         <td><a href="#">Макароны Barilla Farfalle бантики 400г</a></td>
                                                         <td>145 ₽</td>
                                                         <td>1</td>
@@ -149,7 +150,7 @@
                                             </table>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Продолжить
+                                            <button type="button" class="btn" style="background-color: #D9D9D9;" data-bs-dismiss="modal">Продолжить
                                                 покупки</button>
                                             <button type="button" class="btn btn-primary">Перейти к оформлению заказа</button>
                                         </div>
