@@ -5,7 +5,7 @@ if ($conn->connect_error) {
     die("Ошибка подключения к базе данных: " . $conn->connect_error);
 }
 
-$row = null; // Инициализируйте переменную $row значением null
+$row = null; // Инициализирую переменную $row значением null
 
 if (isset($_GET['product_id'])) {
     $product_id = $_GET['product_id'];
@@ -13,7 +13,7 @@ if (isset($_GET['product_id'])) {
     $result = $conn->query($query);
 
     if ($result && $result->num_rows > 0) {
-        $row = $result->fetch_assoc(); // Присвойте $row результат запроса
+        $row = $result->fetch_assoc(); // Присваиваю $row результат запроса
     } else {
         echo 'Продукт не найден.';
     }
@@ -83,7 +83,7 @@ $conn->close();
             </div>
             <div class="info__card">
                 <div class="info__models">
-                    <img class="models__img" src="img/1-drink.svg" alt="<?php echo $row['name']; ?>" />
+                    <img class="models__img" src="<?php echo $row['image_url']; ?>" alt="<?php echo $row['name']; ?>" />
                 </div>
                 <div>
                     <div class="info__container">

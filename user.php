@@ -7,13 +7,13 @@ if ($conn->connect_error) {
 
 session_start();
 
-// Проверяем, авторизован ли пользователь
+// Проверяю, авторизован ли пользователь
 if (!isset($_SESSION['userLogin'])) {
     header('Location: index.php');
     exit;
 }
 
-// Получаем логин пользователя из сессии
+// Получаю логин пользователя из сессии
 $userLogin = $_SESSION['userLogin'];
 
 // Переменная для отслеживания успешного изменения пароля
@@ -26,15 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Защита от SQL-инъекций
     $newPassword = mysqli_real_escape_string($conn, $newPassword);
 
-    // Подготавливаем SQL-запрос с использованием подготовленных выражений
     $updateSql = "UPDATE users SET pass = ? WHERE login = ?";
 
-    // Создаем подготовленное выражение
+    // Создаю подготовленное выражение
     if ($stmt = $conn->prepare($updateSql)) {
-        // Привязываем параметры
+        // Привязываю параметры
         $stmt->bind_param("ss", $newPassword, $userLogin);
 
-        // Выполняем подготовленный запрос
+        // Выполняю подготовленный запрос
         if ($stmt->execute()) {
             $passwordChanged = true;
         } else {

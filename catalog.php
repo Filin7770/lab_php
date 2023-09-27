@@ -1,37 +1,3 @@
-<?php
-session_start();
-
-// Проверяю, авторизован ли пользователь
-if (!isset($_SESSION['userLogin'])) {
-    // Если пользователь не авторизован, перенаправляю его на страницу авторизации
-    header('Location: index.php');
-    exit;
-}
-
-// Получаю логин пользователя из сессии
-$userLogin = $_SESSION['userLogin'];
-$conn = new mysqli("localhost", "root", "", "foodstore");
-
-if ($conn->connect_error) {
-    die("Ошибка подключения к базе данных: " . $conn->connect_error);
-}
-
-// Подготавливаю SQL-запрос для получения пароля пользователя
-$getPasswordSql = "SELECT pass FROM users WHERE login = '$userLogin'";
-$result = $conn->query($getPasswordSql);
-
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $userPassword = $row['pass'];
-} else {
-    // Пользователь не найден
-    $userPassword = "Пароль не найден";
-}
-
-// Закрываю соединение с базой данных
-$conn->close();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <style>
@@ -44,7 +10,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/1e25c286d4.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/profile.css" />
+    <link rel="stylesheet" href="./css/catalog.css" />
     <title>Food Store</title>
 </head>
 
@@ -62,12 +28,7 @@ $conn->close();
                             Каталог
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Еда</a></li>
-                            <li><a class="dropdown-item" href="#">Напитки</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Продукты в наличии</a></li>
+                            <li><a class="dropdown-item" href="./catalog.php">Продукты в наличии</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -146,59 +107,84 @@ $conn->close();
             </div>
         </div>
     </nav>
-    <section class="main_content">
+    <section>
     <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <h1>Личный кабинет</h1>
-                <p>Ваш логин: <?php echo $userLogin; ?></p>
-                <p>Ваш пароль: <?php echo $userPassword; ?></p>
-                <!-- Форма для изменения пароля -->
-                <form action="user.php" method="post">
-                    <div class="form-group">
-                        <label for="newPassword">Новый пароль</label>
-                        <input type="password" class="form-control" id="newPassword" name="newPassword" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="confirmPassword">Подтверждение нового пароля</label>
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Изменить пароль</button>
-                </form>
-                <!-- Кнопка для удаления аккаунта -->
-                <button class="btn btn-danger" onclick="deleteAccount()">Удалить аккаунт</button>
-            </div>
+        <h3 class="text-center mb-4">Продукты в наличии</h3>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <?php
+            $conn = new mysqli("localhost", "root", "", "foodstore");
+
+            if ($conn->connect_error) {
+                die("Ошибка подключения к базе данных: " . $conn->connect_error);
+            }
+    
+            // SQL-запрос для выбора всех продуктов
+            $sql = "SELECT * FROM products";
+            $result = $conn->query($sql);
+    
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<div class="col-lg-4 col-sm-6 mb-3">';
+                    echo '<div class="product-card">';
+                    echo '<div class="product-img">';
+                    echo '<a href="product.php?product_id=' . $row['id'] . '"> <img src="' . $row['image_url'] . '" class="d-block w-100" alt="' . $row['name'] . '"> </a>';
+                    echo '</div>';
+                    echo '<div class="product-details">';
+                    echo '<h4><a href="product.php?product_id=' . $row['id'] . '">' . $row['name'] . '</a></h4>';
+                    echo '<p>' . $row['weight'] . '</p>';
+                    echo '<div class="product-bottom-details d-flex justify-content-between">';
+                    echo '<div class="product-price">' . $row['price'] . '</div>';
+                    echo '<div class="product-link">';
+                    echo '<a href="#"><i class="fa-solid fa-cart-shopping"></i></a>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+            } else {
+                echo 'Продукты не найдены.';
+            }
+    
+            $conn->close();
+            ?>
         </div>
     </div>
-</section>
+    </section>
+    <?php
 
-<!-- JavaScript для подтверждения удаления аккаунта -->
-<script>
-    function deleteAccount() {
-        // Создаем AJAX-запрос
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "delete_account.php", true);
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        ?>
+      
+    <section class="additional-content mt-5 mb-5">
+        <<div class="container mt-4">
+            <h3 class="text-center mb-4">Выгодные покупки с Food Store</h3>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card w-100 h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <img src="img/ruble.svg" class="models__ruble" alt="ruble">
+                                <h5 class="card-title models__heading">Фиксированная цена</h5>
+                            </div>
+                            <p class="card-text models__head">Сумма покупок не вырастет из-за доставки</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card w-100 h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <img src="img/shield.svg" class="models__shield" alt="shield">
+                                <h5 class="card-title models__heading">Безопасная оплата</h5>
+                            </div>
+                            <p class="card-text models__head">Контролируем транзакции, если товар пришел не качественным, то вернём деньги</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
 
-        // Обработчик события, вызываемый при завершении запроса
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var response = xhr.responseText;
-                if (response === "success") {
-                    alert("Удалить аккаунт?.");
-                    window.location.href = "index.php"; // Перенаправление на главную страницу
-                } else {
-                    alert("Ошибка при удалении аккаунта: " + response);
-                }
-            }
-        };
-
-        // Отправляем запрос на удаление аккаунта
-        xhr.send();
-    }
-</script>
-</body>
-</html>
+    </section>
 
     <footer>
         <section class="footer">
@@ -242,6 +228,7 @@ $conn->close();
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

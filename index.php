@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/1e25c286d4.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/index_1.css" />
+    <link rel="stylesheet" href="./css/index.css" />
     <title>Food Store</title>
 </head>
 
@@ -28,12 +28,7 @@
                             Каталог
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Еда</a></li>
-                            <li><a class="dropdown-item" href="#">Напитки</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Продукты в наличии</a></li>
+                            <li><a class="dropdown-item" href="./catalog.php">Продукты в наличии</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -176,15 +171,6 @@
                     <h3 class="second__text">Продукты всегда свежие, в наличии или под заказ</h3>
                 </div>
             </div>
-
-            <div class="row mt-4">
-                <div class="col-md-12">
-                    <button class="btn btn-light" style="background-color: #D9D9D9;">Продукты в наличии</button>
-                </div>
-                <div class="col-md-12">
-                    <button class="btn btn-light" style="background-color: #D9D9D9;">Сделать заказ</button>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -196,7 +182,7 @@
                     <h2 class="third__text">Продукты в наличии</h2>
                 </div>
             </div>
-            <div class="container">
+            <div class="container mb-5">
                 <form class="search custom-width" method="post" action="search.php">
                     <div class="input-group">
                         <input class="form-control search__text" type="text" name="search_text" placeholder="Искать здесь..." aria-label="Искать" aria-describedby="search-button">
@@ -208,30 +194,6 @@
                     </div>
                 </form>
             </div>
-            <div class="container mt-4 mb-4">
-                <div class="catalog">
-                    <h2 class="fourth__text">Каталог</h2>
-                    <form class="category">
-                        <div class="form-group mx-auto" style="max-width: 300px;">
-                            <select class="form-control categories">
-                                <option value="r1">-- Выберите продукт --</option>
-                                <optgroup label="Вода и напитки">
-                                    <option value="r1">Вода</option>
-                                    <option value="r2">Газировка и тоники</option>
-                                    <option value="r3">Соки и морсы</option>
-                                    <option value="r4">Холодный чай и кофе</option>
-                                </optgroup>
-                                <optgroup label="Мясо, птица, рыба">
-                                    <option value="r5">Мясо и птица</option>
-                                    <option value="r6">Колбаса и сосиски</option>
-                                    <option value="r7">Рыба и морепродукты</option>
-                                    <option value="r8">Закуски и паштеты</option>
-                                </optgroup>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
 
         <div class="container">
@@ -239,10 +201,10 @@
                 <div class="col-lg-4 col-sm-6 mb-3">
                     <div class="product-card">
                         <div class="product-img">
-                            <a href="product_1.php?product_id=3"> <img src="img/1.svg" class="d-block w-100" alt="Лимонад"> </a>
+                            <a href="product.php?product_id=3"> <img src="img/1.png" class="d-block w-100" alt="Лимонад"> </a>
                         </div>
                         <div class="product-details">
-                            <h4><a href="product_1.php?product_id=3"></a>Напиток Лимонад Черноголовка</h4>
+                            <h4><a href="product.php?product_id=3"></a>Напиток Лимонад Черноголовка</h4>
                             <p>500 мл</p>
                             <div class="product-bottom-details d-flex justify-content-between">
                                 <div class="product-price">75 ₽</div>
@@ -256,10 +218,10 @@
                 <div class="col-lg-4 col-sm-6 mb-3">
                     <div class="product-card">
                         <div class="product-img">
-                            <a href="product_2.php?product_id=13"> <img src="img/2.svg" class="d-block w-100" alt="Филе"> </a>
+                            <a href="product.php?product_id=13"> <img src="img/2.png" class="d-block w-100" alt="Филе"> </a>
                         </div>
                         <div class="product-details">
-                            <h4><a href="product_2.php?product_id=13"></a>Филе грудки цыплёнка Троекурово</h4>
+                            <h4><a href="product.php?product_id=13"></a>Филе грудки цыплёнка Троекурово</h4>
                             <p>500г</p>
                             <div class="product-bottom-details d-flex justify-content-between">
                                 <div class="product-price">219 ₽</div>
@@ -273,10 +235,10 @@
                 <div class="col-lg-4 col-sm-6 mb-3">
                     <div class="product-card">
                         <div class="product-img">
-                            <a href="product_3.php?product_id=7"> <img src="img/3.svg" class="d-block w-100" alt="Макароны"> </a>
+                            <a href="product.php?product_id=7"> <img src="img/3.png" class="d-block w-100" alt="Макароны"> </a>
                         </div>
                         <div class="product-details">
-                            <h4><a href="product_3.php?product_id=7"></a>Макароны Barilla Farfalle бантики</h4>
+                            <h4><a href="product.php?product_id=7"></a>Макароны Barilla Farfalle бантики</h4>
                             <p>400г</p>
                             <div class="product-bottom-details d-flex justify-content-between">
                                 <div class="product-price">145 ₽</div>

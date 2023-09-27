@@ -59,7 +59,13 @@ if (isset($_POST['newUsername'], $_POST['newPassword'])) {
 
     $sql = "INSERT INTO `users` (login, pass) VALUES ('$newUsername', '$newPassword')";
 
-    $conn->query($sql);
+    if ($conn->query($sql) === TRUE) {
+        // Регистрация прошла успешно, перенаправляем на index.php
+        header("Location: index.php");
+        exit(); // Останавливаем скрипт после перенаправления
+    } else {
+        echo "Ошибка при регистрации: " . $conn->error;
+    }
 }
 
 if (isset($_POST['login'], $_POST['password'])) {
@@ -74,19 +80,19 @@ if (isset($_POST['login'], $_POST['password'])) {
 
         if ($result->num_rows > 0) {
             // Успешная авторизация
-            // Получите логин пользователя
+            // Получаю логин пользователя
             $userLogin = $login;
 
-            // Сохраните логин в сессии
+            // Сохраняю логин в сессии
             session_start();
             $_SESSION['userLogin'] = $userLogin;
 
-            // Перенаправляем на страницу profile.php
+            // Перенаправляю на страницу profile.php
             header("Location: profile.php");
             exit(); // Останавливаем скрипт после перенаправления
         } else {
             echo "Нет такого пользователя";
-            // Вставляем кнопку "Назад" с помощью HTML
+            // Rнопкf "Назад" с помощью HTML
             echo '<br><a href="javascript:history.go(-1)">Назад</a>';
         }
     }
