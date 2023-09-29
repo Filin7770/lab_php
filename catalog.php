@@ -35,7 +35,7 @@
                         <a class="nav-link active" aria-current="page" href="#">О нас</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Контакты</a>
+                        <a class="nav-link" href="#contact">Контакты</a>
                     </li>
                 </ul>
 
@@ -110,6 +110,165 @@
     <section class=" content mb-5">
         <div class="container mt-5">
             <h3 class="text-center mb-4">Продукты в наличии</h3>
+            <div class="container text-center mb-4">
+                <button class="btn btn-success " data-bs-toggle="modal" data-bs-target="#addProductModal">Добавить продукт</button>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal">Редактировать продукт</button>
+                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal">Удалить продукт</button>
+            </div>
+            <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addProductModalLabel">Добавить продукт</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Форма для добавления продукта -->
+                            <form method="post" action="add_product.php">
+                                <div class="mb-3">
+                                    <label for="productName" class="form-label">Название продукта</label>
+                                    <input type="text" class="form-control" id="productName" name="productName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="productComposition" class="form-label">Состав</label>
+                                    <input type="text" class="form-control" id="productComposition" name="productComposition" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="productWeight" class="form-label">Вес</label>
+                                    <input type="text" class="form-control" id="productWeight" name="productWeight" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="productPrice" class="form-label">Цена</label>
+                                    <input type="text" class="form-control" id="productPrice" name="productPrice" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="productImageUrl" class="form-label">URL изображения</label>
+                                    <input type="text" class="form-control" id="productImageUrl" name="productImageUrl" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Добавить</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Модальное окно для редактирования продукта -->
+            <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editProductModalLabel">Редактировать продукт</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" action="update_product.php">
+                                <!-- Выпадающий список продуктов для редактирования -->
+                                <div class="mb-3">
+                                    <label for="editProductIdSelect" class="form-label">Выберите продукт для редактирования</label>
+                                    <select class="form-select" id="editProductIdSelect" name="editProductId" required>
+                                        <option value="" disabled selected>Выберите продукт</option>
+                                        <?php
+                                        $conn = new mysqli("localhost", "root", "", "foodstore");
+
+                                        if ($conn->connect_error) {
+                                            die("Ошибка подключения к базе данных: " . $conn->connect_error);
+                                        }
+
+                                        // SQL-запрос для выбора всех продуктов
+                                        $sql = "SELECT id, name FROM products";
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+                                            }
+                                        } else {
+                                            echo '<option value="" disabled>Нет доступных продуктов</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <!-- Скрытое поле для хранения ID продукта -->
+                                <input type="hidden" id="editProductId" name="editProductId" value="">
+                                <div class="mb-3">
+                                    <label for="editProductName" class="form-label">Название продукта</label>
+                                    <input type="text" class="form-control" id="editProductName" name="editProductName" required>
+                                </div>
+                                <!-- Обработчик события изменения для выпадающего списка -->
+                                <script>
+                                    document.getElementById("editProductIdSelect").addEventListener("change", function() {
+                                        // Обновление значения скрытого поля при выборе продукта
+                                        var selectedProductId = this.value;
+                                        document.getElementById("editProductId").value = selectedProductId;
+                                    });
+                                </script>
+                                <div class="mb-3">
+                                    <label for="editProductComposition" class="form-label">Состав</label>
+                                    <input type="text" class="form-control" id="editProductComposition" name="editProductComposition" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editProductWeight" class="form-label">Вес</label>
+                                    <input type="text" class="form-control" id="editProductWeight" name="editProductWeight" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editProductPrice" class="form-label">Цена</label>
+                                    <input type="text" class="form-control" id="editProductPrice" name="editProductPrice" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editProductImageUrl" class="form-label">URL изображения</label>
+                                    <input type="text" class="form-control" id="editProductImageUrl" name="editProductImageUrl" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteProductModalLabel">Удалить продукт</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Выберите продукт для удаления:</p>
+                            <!-- Форма для выбора продукта для удаления -->
+                            <form method="post" action="delete_product.php">
+                                <div class="mb-3">
+                                    <label for="deleteProductId" class="form-label">Продукт</label>
+                                    <select class="form-select" id="deleteProductId" name="deleteProductId" required>
+                                        <option value="" disabled selected>Выберите продукт</option>
+                                        <?php
+                                        $conn = new mysqli("localhost", "root", "", "foodstore");
+
+                                        if ($conn->connect_error) {
+                                            die("Ошибка подключения к базе данных: " . $conn->connect_error);
+                                        }
+
+                                        // SQL-запрос для выбора всех продуктов
+                                        $sql = "SELECT * FROM products";
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+                                            }
+                                        } else {
+                                            echo '<option value="" disabled>Нет доступных продуктов</option>';
+                                        }
+
+                                        $conn->close();
+                                        ?>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-danger">Удалить</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <?php
                 $conn = new mysqli("localhost", "root", "", "foodstore");
@@ -153,7 +312,7 @@
     </section>
 
     <footer>
-        <section class="footer">
+        <section id="contact" class="footer">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-6 mt-3">
@@ -194,7 +353,6 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
 </body>
 
 </html>

@@ -65,7 +65,6 @@ if (isset($_GET['product_id'])) {
                     </li>
                 </ul>
 
-                </ul>
             </div>
         </div>
         </div>

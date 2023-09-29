@@ -185,7 +185,7 @@ $conn->close();
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var response = xhr.responseText;
                     if (response === "success") {
-                        alert("Удалить аккаунт?.");
+                        alert("Удалить аккаунт?");
                         window.location.href = "index.php"; // Перенаправление на главную страницу
                     } else {
                         alert("Ошибка при удалении аккаунта: " + response);

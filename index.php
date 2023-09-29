@@ -32,10 +32,10 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">О нас</a>
+                    <a class="nav-link active" aria-current="page" href="#about">О нас</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Контакты</a>
+                    <a class="nav-link" href="#contact">Контакты</a>
                     </li>
                 </ul>
 
@@ -253,7 +253,7 @@
             </div>
         </div>
     </section>
-    <section class="additional-content mt-5 mb-5">
+    <section id="about" class="additional-content mt-5 mb-5">
         <<div class="container mt-4">
             <h3 class="text-center mb-4">Выгодные покупки с Food Store</h3>
             <div class="row">
@@ -285,7 +285,7 @@
     </section>
 
     <footer>
-        <section class="footer">
+        <section  id="contact" class="footer">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-6 mt-3">
