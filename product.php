@@ -5,7 +5,7 @@ if ($conn->connect_error) {
     die("Ошибка подключения к базе данных: " . $conn->connect_error);
 }
 
-$row = null; // Инициализирую переменную $row значением null
+$row = null;
 
 if (isset($_GET['product_id'])) {
     $product_id = $_GET['product_id'];
@@ -13,7 +13,7 @@ if (isset($_GET['product_id'])) {
     $result = $conn->query($query);
 
     if ($result && $result->num_rows > 0) {
-        $row = $result->fetch_assoc(); // Присваиваю $row результат запроса
+        $row = $result->fetch_assoc();
     } else {
         echo 'Продукт не найден.';
     }
@@ -21,7 +21,7 @@ if (isset($_GET['product_id'])) {
     echo 'Неверный запрос.';
 }
 
-$conn->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +36,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/1e25c286d4.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/product.css" />
+    <link rel="stylesheet" href="./css/product1.css" />
     <title><?php echo $row['name']; ?></title>
 </head>
 
@@ -93,9 +93,30 @@ $conn->close();
                         </div>
                     </div>
                 </section>
+                <section class="info mb-5">
+                    <div class="container">
+                        <h3>Заказы с этим продуктом:</h3>
+                        <ul>
+                            <?php
+                            $sql = "SELECT o.* FROM orders o INNER JOIN ordering_products op ON o.id = op.id_order WHERE op.id_product = $product_id";
+                            $result = $conn->query($sql);
 
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    echo '<li>Заказ #' . $row['id'] . ' (Дата: ' . $row['order_opening_time'] . ')</li>';
+                                }
+                            } else {
+                                echo '<li>Этот продукт не был заказан.</li>';
+                            }
+
+                            $conn->close();
+                            ?>
+                        </ul>
+                    </div>
+                </section>
             </div>
     </section>
+
     <footer>
         <section class="footer">
             <div class="container">
